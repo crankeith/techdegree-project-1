@@ -3,19 +3,6 @@ Treehouse Techdegree:
 FSJS project 1 - A Random Quote Generator
 ******************************************/
 
-// Study guide for this project - https://drive.google.com/file/d/1s5grutGuQFwJcQP8bFwEI69Q8FCkGdDk/view?usp=sharing
-
-
-/*** 
-  Create the array of quote objects and name it `quotes`.
-  Add at least five quote objects to the `quotes` array.
-  Give each quote object a `quote` and `source` property.
-
-  Recommended: 
-    - Add at least one `year` and/or `citation` property to at least one 
-      quote object.
-***/
-
 let quotes = [
     {
         quote: "Twenty years from now you will be more disappointed by the things that you didn’t do than by the ones you did do.",
@@ -55,7 +42,7 @@ let quotes = [
 
 // Function that returns a random quote object from the 'quotes' array
 function getRandomQuote(arr) {
-    let randomNum = Math.floor(Math.random() * arr.length);
+    let randomNum = randomNumber(0, arr.length-1);
     return arr[randomNum];
 }
 
@@ -86,6 +73,23 @@ function printQuote(){
     html += '</p>';
 
     document.getElementById('quote-box').innerHTML = html;
+
+    let newColor = randomRgb();
+    document.querySelector('body').style.backgroundColor = newColor;
+    document.getElementById('loadQuote').style.backgroundColor = newColor;
+}
+
+//Generate a random RGB color
+
+function randomRgb(){
+    let r = randomNumber(100, 255);
+    let g = randomNumber(100, 255);
+    let b = randomNumber(100, 255);
+    return "rgb(" + r + ", " + g + ", " + b + ")";
+}
+
+function randomNumber(lower, upper){
+   return Math.floor((Math.random() * ((upper - lower) + 1) + lower));
 }
 
 // Add click listener to button

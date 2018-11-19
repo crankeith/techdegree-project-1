@@ -40,6 +40,9 @@ let quotes = [
     }
 ]
 
+//Automatically change quote every 5 secs
+let timer = setInterval(printQuote, 5000);
+
 // Function that returns a random quote object from the 'quotes' array
 function getRandomQuote(arr) {
     let randomNum = randomNumber(0, arr.length-1);
@@ -61,7 +64,7 @@ function printQuote(){
     if (quote.year) {
         html += '<span class="year">' + quote.year + '</span>';
     }
-
+    //Check if quote has tags property and add if available
     if (quote.tags) {
         html += '<span class="tags">Categories: '
         for(let i = 0; i < quote.tags.length; i++){
@@ -74,20 +77,25 @@ function printQuote(){
 
     document.getElementById('quote-box').innerHTML = html;
 
-    let newColor = randomRgb();
+    //Change the background color of body and button
+    let newColor = randomDarkRgb();
     document.querySelector('body').style.backgroundColor = newColor;
     document.getElementById('loadQuote').style.backgroundColor = newColor;
+
+    //Reset timer
+    clearInterval(timer);
+    timer = setInterval(printQuote, 5000);
 }
 
-//Generate a random RGB color
-
-function randomRgb(){
-    let r = randomNumber(100, 255);
-    let g = randomNumber(100, 255);
-    let b = randomNumber(100, 255);
+//Generate a random darker RGB color
+function randomDarkRgb(){
+    let r = randomNumber(0, 150);
+    let g = randomNumber(0, 150);
+    let b = randomNumber(0, 150);
     return "rgb(" + r + ", " + g + ", " + b + ")";
 }
 
+//Generate a random number between two numbers
 function randomNumber(lower, upper){
    return Math.floor((Math.random() * ((upper - lower) + 1) + lower));
 }
@@ -95,4 +103,3 @@ function randomNumber(lower, upper){
 // Add click listener to button
 
 document.getElementById('loadQuote').addEventListener("click", printQuote, false);
-

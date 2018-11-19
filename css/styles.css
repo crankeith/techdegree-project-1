@@ -43,7 +43,7 @@ body {
 }
 
 .source {
-  font-size: 1.25rem;;
+  font-size: 1.25rem;
   letter-spacing: 0.05em;
   line-height: 1.1;
   text-align: right;
@@ -67,6 +67,25 @@ body {
   content: ", ";
   font-style: normal;
 }
+
+.tags {
+  display: block;
+  margin-top: 1em;
+  font-size: 1rem;
+}
+
+.tag {
+  display: inline-block;
+  margin-left: 0.5em;
+  border: 1px solid #ffffff;
+  padding: 0.5em;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  font-size: 0.8rem;
+
+}
+
 
 #loadQuote {
   position: fixed;
